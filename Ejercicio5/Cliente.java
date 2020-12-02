@@ -20,7 +20,7 @@ public class Cliente {
     // Conexion UP desde el cliente
     public void upConexion(){
         try{
-            socketServidor = new Socket(ip,port);
+            socketServidor = new Socket(ip, port);
             System.out.println("Conectado a: " + socketConexion.getInetAddress().getHostName());
         } catch (Exception e){
             System.out.println("Excepción al levantar la conexión: " + e.getMessage());
@@ -68,7 +68,7 @@ public class Cliente {
             @Override
             public void run(){
                 try{
-                    levantarConexion();
+                    upConexion();
                     abrirFlujos();
                     recibirDatos();
                 } finally{

@@ -19,7 +19,7 @@ public class Servidor {
     // Conexion UP desde el servidor
     public void upConexion(){
         try{
-            socketServidor = new Socket(port);
+            socketServidor = new ServerSocket(port);
             socketConexion = socketServidor.accept();
 
             System.out.println("Conexion establecida con el cliente");
@@ -47,7 +47,7 @@ public class Servidor {
                 st = (String) bufferEntrada.readUTF();
                 System.out.println("\n[Cliente] => " + st);
                 System.out.println("\n[Tú] => ");
-            }while(!st.equals(COMANDO_TERMINAR))
+            }while(!st.equals(COMANDO_TERMINAR));
         } catch (IOException e){
             cerrarConexion();
         }        
