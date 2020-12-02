@@ -42,7 +42,7 @@ public class YodafyClienteTCP {
 			
 			// Enviamos el array por el outputStream;
 			//////////////////////////////////////////////////////
-			outputStream.write(bufferEnvio,0,buferEnvio.length);
+			outputStream.write(buferEnvio,0,buferEnvio.length);
 			//////////////////////////////////////////////////////
 			
 			// Aunque le indiquemos a TCP que queremos enviar varios arrays de bytes, sólo

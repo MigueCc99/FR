@@ -30,13 +30,13 @@ public class YodafyServidorIterativo {
 				
 				// Aceptamos una nueva conexión con accept()
 				/////////////////////////////////////////////////
-				Socket socketConexion = SocketServidor.accept();
+				Socket socketConexion = socketServidor.accept();
 				//////////////////////////////////////////////////
 				
 				// Creamos un objeto de la clase ProcesadorYodafy, pasándole como 
 				// argumento el nuevo socket, para que realice el procesamiento
 				// Este esquema permite que se puedan usar hebras más fácilmente.
-				ProcesadorYodafy procesador=new ProcesadorYodafy(socketServicio);
+				ProcesadorYodafy procesador=new ProcesadorYodafy(socketConexion);
 				procesador.procesa();
 				
 			} while (true);
