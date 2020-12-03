@@ -14,7 +14,7 @@ public class Servidor {
 
     Scanner escaner = new Scanner(System.in);
     final String COMANDO_TERMINAR = "salir()";
-    int port = 8989;
+    int port = 42069;
 
     // Conexion UP desde el servidor
     public void upConexion(){

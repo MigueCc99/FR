@@ -8,19 +8,19 @@ import java.util.Scanner;
 public class Cliente {
     
     private Socket socketConexion;
-    private ServerSocket socketServidor;
+    private Socket socketServidor;
     private DataInputStream bufferEntrada = null;
     private DataOutputStream bufferSalida = null;
     
     Scanner teclado = new Scanner(System.in);
     final String COMANDO_TERMINAR = "salir()";
-    int port = 8989;
-    String ip = "localhost";
+    int port = 42069;
+    String host = "localhost";
 
     // Conexion UP desde el cliente
     public void upConexion(){
         try{
-            socketServidor = new Socket(ip, port);
+            socketServidor = new Socket(host, port);
             System.out.println("Conectado a: " + socketConexion.getInetAddress().getHostName());
         } catch (Exception e){
             System.out.println("Excepción al levantar la conexión: " + e.getMessage());
