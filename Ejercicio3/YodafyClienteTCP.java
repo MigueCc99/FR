@@ -17,7 +17,8 @@ public class YodafyClienteTCP {
 		
 		String buferEnvio;
 		String buferRecepcion;
-		
+		int bytesLeidos;
+
 		// Nombre del host donde se ejecuta el servidor:
 		String host="localhost";
 		// Puerto en el que espera el servidor:
@@ -41,7 +42,7 @@ public class YodafyClienteTCP {
 			
 			// Enviamos el buffer;
 			//////////////////////////////////////////////////////
-			PrintWriter outPrinter = new PrintWriter(outputStream, true;
+			PrintWriter outPrinter = new PrintWriter(outputStream, true);
 			outPrinter.println(buferEnvio);
 			//////////////////////////////////////////////////////
 			

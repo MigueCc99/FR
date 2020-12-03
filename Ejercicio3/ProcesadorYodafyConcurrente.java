@@ -2,12 +2,15 @@
 // YodafyServidorIterativo
 // (CC) jjramos, 2012
 //
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.Random;
-
 
 //
 // Nota: si esta clase extendiera la clase Thread, y el procesamiento lo hiciera el método "run()",
@@ -26,7 +29,7 @@ public class ProcesadorYodafyConcurrente extends Thread {
 	private Random random;
 	
 	// Constructor que tiene como parámetro una referencia al socket abierto en por otra clase
-	public ProcesadorYodafy(Socket socketServicio, int ID) {
+	public ProcesadorYodafyConcurrente(Socket socketServicio, int ID) {
 		this.socketServicio=socketServicio;
 		random=new Random();
 		this.ID = ID;
@@ -48,12 +51,12 @@ public class ProcesadorYodafyConcurrente extends Thread {
 			BufferedReader inReader = new BufferedReader(new InputStreamReader(inputStream));
 			receiveData = inReader.readLine();
 			
-			String respuesta = yodaDO(receiveData);
+			String respuesta = yodaDo(receiveData);
 			
-			PrintWriter outPrinter = new PrintWriter(outputStream,true);
+			PrintWriter outPrinter = new PrintWriter(outputStream, true);
 			Thread.sleep(5000);
 			outPrinter.println(respuesta);
-			System.out.println("Sending data, thread: ", + this.ID);
+			System.out.println("Sending data, thread: " + this.ID);
 
 		} catch (IOException e) {
 			System.err.println("Error al obtener los flujso de entrada/salida.");
