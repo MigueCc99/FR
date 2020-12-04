@@ -14,16 +14,22 @@ public class Servidor {
 
     Scanner escaner = new Scanner(System.in);
     final String COMANDO_TERMINAR = "salir()";
-    int port = 42069;
+    int port = 8989;
+
+    public void upServer(){
+    	try{
+            socketServidor = new ServerSocket(port);
+    	}catch (Exception e){
+    		 System.err.println("Error al abrir el server" + port);
+        }
+    }
 
     // Conexion UP desde el servidor
     public void upConexion(){
         try{
-            socketServidor = new ServerSocket(port);
-            socketConexion = socketServidor.accept();
-
+            socketConexion = socketServidor.accept(); 
             System.out.println("Conexion establecida con el cliente");
-        } catch (IOException e){
+        } catch (Exception e){
             System.err.println("Error al escuchar en el puerto " + port);
         }
     }
@@ -77,6 +83,7 @@ public class Servidor {
             bufferEntrada.close();
             bufferSalida.close();
             socketConexion.close();
+            System.out.println("Conexión con cliente terminada");
         } catch(IOException e){
             System.err.println("Error al intentar cerrar la conexión");
         }
@@ -87,6 +94,7 @@ public class Servidor {
         Thread nuevoHilo = new Thread(new Runnable(){
             @Override
             public void run(){
+            	upServer();
                 while(true){
                     try{
                         upConexion();
@@ -95,7 +103,7 @@ public class Servidor {
                     } finally{
                         cerrarConexion();
                     }
-                }
+               }
             }
         });
         nuevoHilo.start();
